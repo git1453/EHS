@@ -6,7 +6,7 @@ namespace ClassLib
     /// <summary>
     /// 用于管理员题库操作的模型
     /// </summary>
-    public class ExaLibModel
+    public class ExaLibModel:BaseModel
     {
         /// <summary>
         /// 题库名

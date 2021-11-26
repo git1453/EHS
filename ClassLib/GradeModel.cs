@@ -6,7 +6,7 @@ namespace ClassLib
     /// <summary>
     /// 用于学员的考试模型
     /// </summary>
-    public class GradeModel
+    public class GradeModel:BaseModel
     {
         /// <summary>
         /// 主键

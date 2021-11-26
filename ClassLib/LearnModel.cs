@@ -6,7 +6,7 @@ namespace ClassLib
     /// <summary>
     /// 用于学员学习进度模型
     /// </summary>
-    public class LearnModel
+    public class LearnModel:BaseModel
     {
         public int id;
         /// <summary>

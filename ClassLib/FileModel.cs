@@ -5,7 +5,7 @@ namespace ClassLib
     /// <summary>
     /// 用于管理员课件操作的模型
     /// </summary>
-    public class FileModel
+    public class FileModel:BaseModel
     {
         /// <summary>
         /// 课件编号

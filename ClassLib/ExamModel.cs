@@ -6,7 +6,7 @@ namespace ClassLib
     /// <summary>
     /// 用于管理员考试操作的模型
     /// </summary>
-    public class ExamModel
+    public class ExamModel:BaseModel
     {
         /// <summary>
         ///考试名称

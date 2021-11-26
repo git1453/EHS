@@ -7,7 +7,7 @@ namespace ClassLib
     /// <summary>
     /// 用于管理员课程管理的模型
     /// </summary>
-    public class CourseModel
+    public class CourseModel:BaseModel
     {
         /// <summary>
         /// 课程简介文件
