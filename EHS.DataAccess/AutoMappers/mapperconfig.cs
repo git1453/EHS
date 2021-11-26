@@ -6,9 +6,9 @@ using EHS.Entities;
 
 namespace EHS.DataAccess
 {
-    public class mapper : Profile
+    public class mapperconfig : Profile
     {
-        public mapper()
+        public mapperconfig()
         {
             CreateMap<FileModel, EhsCourseware>()
                 .ForMember(x => x.Id, y => y.MapFrom(z => z.Filenum))

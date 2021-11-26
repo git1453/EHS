@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EHS.DataAccess.DAService.Core
 {
-    public interface IModelDAService<TModel> where TModel : class
+    public interface IModelDAService<TModel> where TModel : BaseModel
     {
 
         IEnumerable<TModel> GetAll();

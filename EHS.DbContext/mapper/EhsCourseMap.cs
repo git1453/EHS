@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace EHS.DbContexts.mapper
 {
-    public class CourseMap : IEntityTypeConfiguration<EhsCourse>
+    public class EhsCourseMap : IEntityTypeConfiguration<EhsCourse>
     {
         public void Configure(EntityTypeBuilder<EhsCourse> builder)
         {

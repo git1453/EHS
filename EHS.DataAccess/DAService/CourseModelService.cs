@@ -18,7 +18,8 @@ namespace EHS.DataAccess.DAService
         protected readonly DbSet<EhsCoursefolder> _coursesfolder;
         protected readonly DbSet<EhsCoursefoldercourseware> _coursefoldercoursewares;
         protected readonly DbSet<EhsCoursearrange> _coursesarrange;
-        public CourseModelService(EHSContext dbContext) : base(dbContext)
+
+        public CourseModelService(EHSContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
         }
 

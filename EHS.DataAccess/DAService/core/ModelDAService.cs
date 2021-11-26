@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ClassLib;
 using EHS.DbContexts;
 using EHS.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +8,7 @@ using System.Collections.Generic;
 
 namespace EHS.DataAccess.DAService.Core
 {
-    public class ModelDAService<TModel> : BaseDAService, IModelDAService<TModel> where TModel : class
+    public class ModelDAService<TModel> : BaseDAService, IModelDAService<TModel> where TModel : BaseModel
     {
         public ModelDAService(EHSContext dbContext) : base(dbContext)
         {
