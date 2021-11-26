@@ -3,7 +3,7 @@
     /// <summary>
     /// 课程的已学课件记录表
     /// </summary>
-    public class EhsStudiedcourseware
+    public class EhsStudiedcourseware : BaseEntity
     {
         /// <summary>
         /// 主键

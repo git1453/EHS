@@ -1,4 +1,5 @@
 ﻿using ClassLib;
+using EHS.DataAccess.DAService.Core;
 using EHS.DbContexts;
 using EHS.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -6,11 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EHS.DataAccess.Repository
+namespace EHS.DataAccess.DAService
 {
-    public class LearnModelRepository :Repository<LearnModel>
+    public class LearnModelService : ModelDAService<LearnModel>
     {
-        public LearnModelRepository(EHSContext dbContext) : base(dbContext)
+        public LearnModelService(EHSContext dbContext) : base(dbContext)
         {
         }
 
@@ -58,7 +59,7 @@ namespace EHS.DataAccess.Repository
                 });
             }
             _dbContext.SaveChanges();
-            if (studyrecord.Id == default(int))
+            if (studyrecord.Id == default)
                 return null;
             else
             {

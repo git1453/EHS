@@ -7,12 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
+using EHS.DataAccess.DAService.Core;
 
-namespace EHS.DataAccess.Repository
+namespace EHS.DataAccess.DAService
 {
-    public class FileModelRepository : Repository<FileModel>
+    public class FileModelService : ModelDAService<FileModel>
     {
-        public FileModelRepository(EHSContext dbContext, IMapper mapper) : base(dbContext, mapper)
+        public FileModelService(EHSContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
         }
 

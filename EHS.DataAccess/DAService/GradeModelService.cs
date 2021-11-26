@@ -2,6 +2,7 @@
 using AutoMapper.EntityFrameworkCore;
 using AutoMapper.QueryableExtensions;
 using ClassLib;
+using EHS.DataAccess.DAService.Core;
 using EHS.DbContexts;
 using EHS.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -9,11 +10,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EHS.DataAccess.Repository
+namespace EHS.DataAccess.DAService
 {
-    public class GradeModelRepository : Repository<GradeModel>
+    public class GradeModelService : ModelDAService<GradeModel>
     {
-        public GradeModelRepository(EHSContext dbContext, IMapper mapper) : base(dbContext, mapper)
+        public GradeModelService(EHSContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
         }
 
@@ -26,7 +27,7 @@ namespace EHS.DataAccess.Repository
         public override void Delete(params GradeModel[] models)
         {
             var ids = models.Select(x => x.id);
-            var del= _dbContext.EhsExamrecords.Where(x=>ids.Contains(x.Id));
+            var del = _dbContext.EhsExamrecords.Where(x => ids.Contains(x.Id));
             _dbContext.RemoveRange(del);
             _dbContext.SaveChanges();
         }
@@ -41,13 +42,13 @@ namespace EHS.DataAccess.Repository
 
         public override IEnumerable<GradeModel> GetAll()
         {
-           var models= _dbContext.EhsExamrecords.AsNoTracking().ProjectTo<GradeModel>(_autoMapper.ConfigurationProvider).AsEnumerable();
+            var models = _dbContext.EhsExamrecords.AsNoTracking().ProjectTo<GradeModel>(_autoMapper.ConfigurationProvider).AsEnumerable();
             return models;
         }
 
         public override GradeModel Insert(GradeModel model)
         {
-            var entity =_autoMapper.Map<EhsExamrecord>(model);
+            var entity = _autoMapper.Map<EhsExamrecord>(model);
             _dbContext.EhsExamrecords.Add(entity);
             _dbContext.SaveChanges();
             model.id = entity.Id;
@@ -56,7 +57,7 @@ namespace EHS.DataAccess.Repository
 
         public override void Insert(params GradeModel[] models)
         {
-            var entities= _autoMapper.Map<EhsExamrecord[]>(models);
+            var entities = _autoMapper.Map<EhsExamrecord[]>(models);
             _dbContext.AddRange(entities);
             _dbContext.SaveChanges();
         }

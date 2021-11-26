@@ -5,7 +5,7 @@ namespace EHS.Entities
     /// <summary>
     /// 学习记录表
     /// </summary>
-    public partial class EhsStudyrecord
+    public partial class EhsStudyrecord : BaseEntity
     {
         /// <summary>
         /// 主键

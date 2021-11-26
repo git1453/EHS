@@ -5,7 +5,7 @@ namespace EHS.Entities
     /// <summary>
     /// 考试安排表
     /// </summary>
-    public partial class EhsExamarrange
+    public partial class EhsExamarrange : BaseEntity
     {
         /// <summary>
         /// 考试主键

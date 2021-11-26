@@ -7,7 +7,7 @@ namespace EHS.Entities
     /// <summary>
     /// 课程表
     /// </summary>
-    public partial class EhsCourse
+    public partial class EhsCourse: BaseEntity
     {
         /// <summary>
         /// 课程主键

@@ -5,7 +5,7 @@ namespace EHS.Entities
     /// <summary>
     /// 职业危害告知表
     /// </summary>
-    public partial class EhsOccupationalhazard
+    public partial class EhsOccupationalhazard : BaseEntity
     {
         /// <summary>
         /// 主键

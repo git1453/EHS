@@ -3,7 +3,7 @@
     /// <summary>
     /// 课程安排
     /// </summary>
-    public class EhsCoursearrange
+    public class EhsCoursearrange : BaseEntity
     {
         /// <summary>
         /// 主键

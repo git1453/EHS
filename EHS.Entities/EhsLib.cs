@@ -5,7 +5,7 @@ namespace EHS.Entities
     /// <summary>
     /// 试题表
     /// </summary>
-    public partial class EhsLib
+    public partial class EhsLib : BaseEntity
     {
         /// <summary>
         /// 题库名

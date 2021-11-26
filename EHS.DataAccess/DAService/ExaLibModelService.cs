@@ -1,17 +1,18 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using ClassLib;
+using EHS.DataAccess.DAService.Core;
 using EHS.DbContexts;
 using EHS.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EHS.DataAccess.Repository
+namespace EHS.DataAccess.DAService
 {
-    public class ExaLibModelReposity : Repository<ExaLibModel>
+    public class ExaLibModelService : ModelDAService<ExaLibModel>
     {
-        public ExaLibModelReposity(EHSContext dbContext, IMapper mapper) : base(dbContext, mapper)
+        public ExaLibModelService(EHSContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
         }
 
@@ -63,7 +64,7 @@ namespace EHS.DataAccess.Repository
         public override void Update(ExaLibModel model)
         {
             var entity = _autoMapper.Map<EhsLib>(model);
-            _dbContext.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _dbContext.Entry(entity).State = EntityState.Modified;
             _dbContext.SaveChanges();
         }
 
@@ -72,7 +73,7 @@ namespace EHS.DataAccess.Repository
             var entities = _autoMapper.Map<ExaLibModel[]>(models);
             foreach (var entitiy in entities)
             {
-                _dbContext.Entry(entitiy).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                _dbContext.Entry(entitiy).State = EntityState.Modified;
             }
             _dbContext.SaveChanges();
         }
@@ -82,7 +83,7 @@ namespace EHS.DataAccess.Repository
             var entities = _autoMapper.Map<IEnumerable<ExaLibModel>>(models);
             foreach (var entitiy in entities)
             {
-                _dbContext.Entry(models).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                _dbContext.Entry(models).State = EntityState.Modified;
             }
             _dbContext.SaveChanges();
         }

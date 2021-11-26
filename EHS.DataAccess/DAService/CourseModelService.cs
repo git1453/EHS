@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ClassLib;
+using EHS.DataAccess.DAService.Core;
 using EHS.DbContexts;
 using EHS.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -9,15 +10,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EHS.DataAccess.Repository
+namespace EHS.DataAccess.DAService
 {
-    public class CourseModelRepository :Repository<CourseModel>
+    public class CourseModelService : ModelDAService<CourseModel>
     {
         protected readonly DbSet<EhsCourse> _courses;
         protected readonly DbSet<EhsCoursefolder> _coursesfolder;
         protected readonly DbSet<EhsCoursefoldercourseware> _coursefoldercoursewares;
         protected readonly DbSet<EhsCoursearrange> _coursesarrange;
-        public CourseModelRepository(EHSContext dbContext) : base(dbContext)
+        public CourseModelService(EHSContext dbContext) : base(dbContext)
         {
         }
 
@@ -32,9 +33,9 @@ namespace EHS.DataAccess.Repository
 
         public override void Delete(params CourseModel[] models)
         {
-            var ids=models.Select(x => x.coursenum);
-            _dbContext.RemoveRange(_dbContext.EhsCourses.Where(x=>ids.Contains(x.Id)));
-            _dbContext.RemoveRange(_dbContext.EhsCoursefolders.Where(x => ids.Contains(x.Courseid )));
+            var ids = models.Select(x => x.coursenum);
+            _dbContext.RemoveRange(_dbContext.EhsCourses.Where(x => ids.Contains(x.Id)));
+            _dbContext.RemoveRange(_dbContext.EhsCoursefolders.Where(x => ids.Contains(x.Courseid)));
             _dbContext.RemoveRange(_dbContext.EhsCoursefoldercoursewares.Where(x => ids.Contains(x.Courseid)));
             _dbContext.RemoveRange(_dbContext.EhsCoursearranges.Where(x => ids.Contains(x.Courseid)));
             _dbContext.SaveChanges();
@@ -52,10 +53,10 @@ namespace EHS.DataAccess.Repository
 
         public override IEnumerable<CourseModel> GetAll()
         {
-            var courses=_dbContext.EhsCourses.AsNoTracking().AsEnumerable();
-            var coursearranges=_dbContext.EhsCoursearranges.AsNoTracking().AsEnumerable();
-            var coursefolders=_dbContext.EhsCoursefolders.AsNoTracking().AsEnumerable();
-            var coursefoldercoursewares=_dbContext.EhsCoursefoldercoursewares.AsNoTracking().AsEnumerable();
+            var courses = _dbContext.EhsCourses.AsNoTracking().AsEnumerable();
+            var coursearranges = _dbContext.EhsCoursearranges.AsNoTracking().AsEnumerable();
+            var coursefolders = _dbContext.EhsCoursefolders.AsNoTracking().AsEnumerable();
+            var coursefoldercoursewares = _dbContext.EhsCoursefoldercoursewares.AsNoTracking().AsEnumerable();
 
             foreach (EhsCourse tmp in courses)
             {
@@ -73,7 +74,7 @@ namespace EHS.DataAccess.Repository
                 #region 权限判定
                 if (tmparra.Any())
                 {
-                    if (tmparra.Count()==1&&tmparra.First().Authority.Equals(configure.Authority1[0]))
+                    if (tmparra.Count() == 1 && tmparra.First().Authority.Equals(configure.Authority1[0]))
                     {
                         courseModel.participants = null;
                         courseModel.authority = configure.Authority1[0];
@@ -207,14 +208,14 @@ namespace EHS.DataAccess.Repository
             course1.Createtime = model.creatime;
             course1.Classhour = model.coursecount;
             course1.Context = model.coursesummery;
-           _dbContext.Update(course1);
+            _dbContext.Update(course1);
 
             int id = model.coursenum;
             //更新课程安排表
             var arrangs = _dbContext.EhsCoursearranges.Where(x => x.Courseid == id);
             if (model.authority.Equals(configure.Authority1[0]))
             {
-                if(arrangs.Any())
+                if (arrangs.Any())
                 {
                     _dbContext.RemoveRange(arrangs);
                     _dbContext.Add(new EhsCoursearrange { Authority = configure.Authority1[0], Badge = 0, Courseid = id });
@@ -232,7 +233,7 @@ namespace EHS.DataAccess.Repository
             }
 
             //更新课程文件加
-            _dbContext.EhsCoursefolders.RemoveRange( _dbContext.EhsCoursefolders.Where(x => x.Courseid == id));
+            _dbContext.EhsCoursefolders.RemoveRange(_dbContext.EhsCoursefolders.Where(x => x.Courseid == id));
             _dbContext.EhsCoursefoldercoursewares.RemoveRange(_dbContext.EhsCoursefoldercoursewares.Where(x => x.Courseid == id));
             // List<EhsCoursefolder> coursefolders = new List<EhsCoursefolder>();
             List<EhsCoursefoldercourseware> coursefoldercoursewares = new List<EhsCoursefoldercourseware>();
@@ -258,7 +259,7 @@ namespace EHS.DataAccess.Repository
             }
             _dbContext.EhsCoursefoldercoursewares.AddRange(coursefoldercoursewares);
             _dbContext.SaveChanges();
-   
+
         }
 
         public override void Update(params CourseModel[] models)

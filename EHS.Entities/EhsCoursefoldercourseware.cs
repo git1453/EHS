@@ -3,7 +3,7 @@
     /// <summary>
     /// 课程文件夹课件表
     /// </summary>
-    public class EhsCoursefoldercourseware
+    public class EhsCoursefoldercourseware : BaseEntity
     {
         /// <summary>
         /// 主键

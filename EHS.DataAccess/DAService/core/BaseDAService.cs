@@ -2,18 +2,18 @@
 using System;
 using AutoMapper;
 
-namespace EHS.DataAccess.Repository
+namespace EHS.DataAccess.DAService.Core
 {
-    public class BaseRepository
+    public class BaseDAService
     {
         protected readonly EHSContext _dbContext;
         protected readonly IMapper _autoMapper;
-        public BaseRepository(EHSContext dbContext,IMapper mapper)
+        public BaseDAService(EHSContext dbContext,IMapper mapper)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
             _autoMapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
-        public BaseRepository(EHSContext dbContext)
+        public BaseDAService(EHSContext dbContext)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
 

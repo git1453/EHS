@@ -5,7 +5,7 @@ namespace EHS.Entities
     /// <summary>
     /// 课程文件夹表
     /// </summary>
-    public class EhsCoursefolder
+    public class EhsCoursefolder : BaseEntity
     {
         /// <summary>
         /// 主键

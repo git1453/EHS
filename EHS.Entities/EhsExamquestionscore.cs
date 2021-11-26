@@ -5,7 +5,7 @@ namespace EHS.Entities
     /// <summary>
     /// 考试的试题及分数表
     /// </summary>
-    public partial class EhsExamquestionscore
+    public partial class EhsExamquestionscore : BaseEntity
     {
         /// <summary>
         /// 主键

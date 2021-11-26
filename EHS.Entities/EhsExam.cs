@@ -5,7 +5,7 @@ namespace EHS.Entities
     /// <summary>
     /// 考试表
     /// </summary>
-    public partial class EhsExam
+    public partial class EhsExam : BaseEntity
     {
         /// <summary>
         /// 考试名称

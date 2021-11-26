@@ -5,7 +5,7 @@ namespace EHS.Entities
     /// <summary>
     /// 考试记录表
     /// </summary>
-    public partial class EhsExamrecord
+    public partial class EhsExamrecord : BaseEntity
     {
 
         

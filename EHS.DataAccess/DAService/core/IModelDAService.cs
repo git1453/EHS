@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace EHS.DataAccess
+namespace EHS.DataAccess.DAService.Core
 {
-    public interface IRepository<TModel> where TModel : class
+    public interface IModelDAService<TModel> where TModel : class
     {
 
         IEnumerable<TModel> GetAll();

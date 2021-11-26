@@ -1,16 +1,17 @@
 ﻿using AutoMapper;
 using ClassLib;
+using EHS.DataAccess.DAService.Core;
 using EHS.DbContexts;
 using EHS.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EHS.DataAccess.Repository
+namespace EHS.DataAccess.DAService
 {
-    public class ExamModelRepository : Repository<ExamModel>
+    public class ExamModelService : ModelDAService<ExamModel>
     {
-        public ExamModelRepository(EHSContext dbContext, IMapper mapper) : base(dbContext, mapper)
+        public ExamModelService(EHSContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
         }
 
@@ -142,7 +143,7 @@ namespace EHS.DataAccess.Repository
             };
             if (model.authority.Equals(configure.Authority2[2]))
             {
-                List< EhsExamarrange > examarranges=new List< EhsExamarrange >(model.department.Count);
+                List<EhsExamarrange> examarranges = new List<EhsExamarrange>(model.department.Count);
                 foreach (var depar in model.department)
                 {
                     EhsExamarrange examarrange = new EhsExamarrange
@@ -175,7 +176,7 @@ namespace EHS.DataAccess.Repository
                 _dbContext.AddRange(examarranges);
             };
 
-            List< EhsExamquestionscore > examquestionscores=new List<EhsExamquestionscore>(model.questions.Count);
+            List<EhsExamquestionscore> examquestionscores = new List<EhsExamquestionscore>(model.questions.Count);
             foreach (var s in model.questions)
             {
                 EhsExamquestionscore examquestionscore = new EhsExamquestionscore
@@ -184,11 +185,11 @@ namespace EHS.DataAccess.Repository
                     Questionid = s.Key,
                     Questionscore = s.Value
                 };
-               examquestionscores.Add(examquestionscore);
+                examquestionscores.Add(examquestionscore);
             }
             _dbContext.AddRange(examquestionscores);
             _dbContext.SaveChanges();
-            
+
             return model;
         }
 
