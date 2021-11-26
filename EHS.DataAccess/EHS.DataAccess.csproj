@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLib\ClassLib.csproj" />
+    <ProjectReference Include="..\EHS.DbContext\EHS.DbContexts.csproj" />
+    <ProjectReference Include="..\EHS.Entities\EHS.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Collection" Version="7.0.1" />
+    <PackageReference Include="AutoMapper.Collection.EntityFrameworkCore" Version="7.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AutoMappers\" />
+  </ItemGroup>
+
+</Project>
