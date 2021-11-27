@@ -1,9 +1,9 @@
 ﻿using EHS.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-namespace EHS.DbContexts.mapper
+namespace EHS.DbContexts.EntityTypeConfiguration
 {
-    public class EhsCourseMap : IEntityTypeConfiguration<EhsCourse>
+    public class EhsCourseConfiguration : IEntityTypeConfiguration<EhsCourse>
     {
         public void Configure(EntityTypeBuilder<EhsCourse> builder)
         {

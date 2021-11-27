@@ -1,10 +1,13 @@
 ﻿
 
+using System;
+
 namespace EHS.Entities
 {
     /// <summary>
     /// 职业危害告知表
     /// </summary>
+    [Obsolete]
     public partial class EhsOccupationalhazard : BaseEntity
     {
         /// <summary>

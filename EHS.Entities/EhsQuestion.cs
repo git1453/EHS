@@ -1,5 +1,6 @@
 ﻿namespace EHS.Entities
 {
+    [System.Obsolete]
     public partial class EhsQuestion : BaseEntity
     {
         public int Id { get; set; }

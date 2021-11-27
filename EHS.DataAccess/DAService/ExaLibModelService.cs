@@ -19,21 +19,21 @@ namespace EHS.DataAccess.DAService
         public override void Delete(ExaLibModel model)
         {
             var entity = _autoMapper.Map<EhsLib>(model);
-            _dbContext.Remove(entity);
+            _dbContext.EhsLibs.Remove(entity);
             _dbContext.SaveChanges();
         }
 
         public override void Delete(params ExaLibModel[] models)
         {
             var entity = _autoMapper.Map<EhsLib[]>(models);
-            _dbContext.RemoveRange(entity);
+            _dbContext.EhsLibs.RemoveRange(entity);
             _dbContext.SaveChanges();
         }
 
         public override void Delete(IEnumerable<ExaLibModel> models)
         {
             var entity = _autoMapper.Map<IEnumerable<EhsLib>>(models);
-            _dbContext.RemoveRange(entity);
+            _dbContext.EhsLibs.RemoveRange(entity);
             _dbContext.SaveChanges();
         }
 
@@ -42,7 +42,7 @@ namespace EHS.DataAccess.DAService
         public override ExaLibModel Insert(ExaLibModel model)
         {
             var entity = _autoMapper.Map<EhsLib>(model);
-            _dbContext.Add(entity);
+            _dbContext.EhsLibs.Add(entity);
             _dbContext.SaveChanges();
             return _autoMapper.Map<ExaLibModel>(entity);
         }
@@ -50,14 +50,14 @@ namespace EHS.DataAccess.DAService
         public override void Insert(params ExaLibModel[] models)
         {
             var entity = _autoMapper.Map<EhsLib[]>(models);
-            _dbContext.AddRange(entity);
+            _dbContext.EhsLibs.AddRange(entity);
             _dbContext.SaveChanges();
         }
 
         public override void Insert(IEnumerable<ExaLibModel> models)
         {
             var entity = _autoMapper.Map<IEnumerable<EhsLib>>(models);
-            _dbContext.AddRange(entity);
+            _dbContext.EhsLibs.AddRange(entity);
             _dbContext.SaveChanges();
         }
 
