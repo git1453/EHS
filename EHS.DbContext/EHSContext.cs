@@ -37,6 +37,7 @@ namespace EHS.DbContexts
         /// <param name="modelBuilder">用于为该上下文构造模型的构造器</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+        
             modelBuilder.HasDefaultSchema("SCOTT");
 
             modelBuilder.ApplyConfiguration(new EhsExamConfiguration());

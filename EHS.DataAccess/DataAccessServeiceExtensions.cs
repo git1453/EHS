@@ -18,7 +18,11 @@ namespace EHS.DataAccess
         /// </summary>
         /// <typeparam name="TContext"></typeparam>
         /// <param name="services"></param>
-        /// <param name="action"><example>opt=>opt.UseOracle(connectionstring, b => b.UseOracleSQLCompatibility("11"))</example></param>
+        /// <param name="action">
+        /// <example>opt=>opt.UseOracle(connectionstring, b => b.UseOracleSQLCompatibility("11"))
+        /// 请将连接字符串放在appsetting中，使用configuration读取
+        /// connectionstring="User ID=scott;Password=chxlQqxMbdwWlc;DATA SOURCE=192.168.4.175:1521/orcl.168.4.175;Persist Security Info=True;Pooling=True;Max Pool Size=135"
+        /// </example></param>
         /// <param name="poolSize">连接池大小</param>
         /// <remarks>此方法仅支持一个db上下文，如果多次调用，将抛出异常。</remarks>
         /// <returns></returns>
